@@ -1,4 +1,3 @@
-import csv
 import numpy as np
 from sklearn.svm import SVR
 import matplotlib.pyplot as plt
@@ -9,16 +8,6 @@ from sklearn.exceptions import DataConversionWarning
 
 warnings.simplefilter("ignore", category=FutureWarning)
 warnings.simplefilter("ignore", category=DataConversionWarning)
-
-'''def get_data(filename):
-    with open(filename, 'r') as csvfile:
-        csvFileReader = csv.reader(csvfile)
-        next(csvFileReader)
-        for row in csvFileReader:
-            dates.append(int(row[0].split('-')[0]))
-            prices.append(float(row[2]))
-    return
-'''
 
 def get_data(ticker):
     end = datetime.now()
@@ -93,12 +82,3 @@ for ticker in ticker_list:
     print(f"{ticker} predicted prices for next day:\nRBF: {predicted_price[0]:.2f}, Linear: {predicted_price[1]:.2f}, Poly: {predicted_price[2]:.2f}")
 
 plt.show()
-
-
-'''ticker = "NVDA"
-dates, prices = get_data(ticker)
-prediction_day = len(dates)
-predicted_price = predict_prices(dates, prices, prediction_day
-
-print(f"Predicted prices for next day:\nRBF: {predicted_price[0]:.2f}, Linear: {predicted_price[1]:.2f}, Poly: {predicted_price[2]:.2f}")'''
-
