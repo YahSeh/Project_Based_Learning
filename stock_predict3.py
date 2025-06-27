@@ -1,4 +1,3 @@
-import csv
 import numpy as np
 from sklearn.svm import SVR
 import matplotlib.pyplot as plt
@@ -10,16 +9,6 @@ import time
 
 warnings.simplefilter("ignore", category=FutureWarning)
 warnings.simplefilter("ignore", category=DataConversionWarning)
-
-'''def get_data(filename):
-    with open(filename, 'r') as csvfile:
-        csvFileReader = csv.reader(csvfile)
-        next(csvFileReader)
-        for row in csvFileReader:
-            dates.append(int(row[0].split('-')[0]))
-            prices.append(float(row[2]))
-    return
-'''
 
 def get_data(ticker):
     end = datetime.now()
