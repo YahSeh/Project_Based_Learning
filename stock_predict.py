@@ -1,3 +1,4 @@
+import csv
 import numpy as np
 from sklearn.svm import SVR
 import matplotlib.pyplot as plt
@@ -11,7 +12,7 @@ warnings.simplefilter("ignore", category=DataConversionWarning)
 
 def get_data(ticker):
     end = datetime.now()
-    start = end - timedelta(days=183)
+    start = end - timedelta(days=int(timespan))
     data = yf.download(ticker, start=start, end=end)
 
     dates = []
@@ -61,14 +62,17 @@ def predict_prices(dates, prices, x, ticker):
     plt.scatter(x, pred_poly, color='blue', marker='x', s=100, label='Polynomial Prediction')
 
 
-    plt.xlabel('Day Index')
+    plt.xlabel('Trading-day Index')
     plt.ylabel('Price')
-    plt.title(f'{ticker} Stock Price Prediction (Last {len(dates)} Days)')
+    plt.title(f"{ticker} Price last {timespan} days (last {len(dates)} trading days)")
     plt.legend()
-    plt.tight_layout
+    plt.tight_layout()
     plt.show(block=False)
 
     return pred_rbf, pred_lin, pred_poly
+
+# Ask user for the amount of days to base the prediction on
+timespan = input("Enter the amount of days to take into account (e.g., For the last month : 30): ")
 
 # Ask user for tickers
 tickers_input = input("Enter stock tickers separated by spaces (e.g., AAPL NVDA AMD): ")
@@ -79,6 +83,7 @@ for ticker in ticker_list:
     dates, prices = get_data(ticker)
     prediction_day = len(dates)
     predicted_price = predict_prices(dates, prices, prediction_day, ticker)
+    print(f"Fetched {len(dates)} trading days for {ticker}")
     print(f"{ticker} predicted prices for next day:\nRBF: {predicted_price[0]:.2f}, Linear: {predicted_price[1]:.2f}, Poly: {predicted_price[2]:.2f}")
 
 plt.show()
