@@ -40,14 +40,15 @@ Développer une mini-application Python avec une interface web pour analyser les
 
 ## Personnalisation de l'Interface
 - Affichage des statistiques avec des options de tri et de filtre :
-     - Recherche par adresse mail avec auto-complétion
-     - Recherche par tranche de score selon les différentes catégories
-     - Tri par date (plus récent au plus ancient ou inversement)
-     - Tri par score (croissant/décroissant)
+     - Recherche par adresse mail avec auto-complétion.
+     - Recherche par tranche de score selon les différentes catégories.
+     - Tri par date (plus récent au plus ancient ou inversement).
+     - Tri par score (croissant/décroissant).
 - Style des commentaires avec encadrement, mise en gras pour l'email, et coloration du score.
+- Graphique représentant le nombre de commentaires par catégorie de score en fonction du tri.
 
 ## Instructions d'Utilisation
 1. Cloner le script Python.
-2. Installer les dépendances (`streamlit`, `requests`).
+2. Installer les dépendances (`streamlit`, `requests`, `matplotlib`, `numpy`).
 3. Exécuter localement (`streamlit run test_greenkub.py`).
 4. Accéder à l'interface web générée sur `localhost`.
